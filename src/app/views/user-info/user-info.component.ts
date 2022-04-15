@@ -10,7 +10,7 @@ import * as _ from 'lodash';
 export class UserInfoComponent implements OnInit {
 
   constructor() { }
-
+  title = 'User ';
   ngOnInit(): void {
   }
 
