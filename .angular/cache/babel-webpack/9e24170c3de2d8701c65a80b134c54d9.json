@@ -1,0 +1,1 @@
+{"ast":null,"code":"// @internal\nexport function sortByOptions(options, config) {\n  options.sortBy = options.sortBy || config && config.sortBy;\n  options.sortByOrder = options.sortByOrder || config && config.sortByOrder;\n} //# sourceMappingURL=sortByOptions.js.map","map":null,"metadata":{},"sourceType":"module"}

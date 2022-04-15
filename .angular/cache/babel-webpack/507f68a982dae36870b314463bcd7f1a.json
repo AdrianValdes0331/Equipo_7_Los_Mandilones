@@ -1,0 +1,1 @@
+{"ast":null,"code":"// @internal\nexport function toBoolean(value) {\n  return value != null && `${value}` !== 'false';\n} //# sourceMappingURL=toBoolean.js.map","map":null,"metadata":{},"sourceType":"module"}

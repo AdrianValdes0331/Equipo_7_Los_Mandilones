@@ -1,0 +1,1 @@
+{"ast":null,"code":"/**\n * Generate random guid\n *\n * @example\n *\n * {\n *   id: guid()\n * }\n *\n * @remarks this isn't a GUID, but a 10 char random alpha-num\n */\nexport function guid() {\n  return Math.random().toString(36).slice(2);\n} //# sourceMappingURL=guid.js.map","map":null,"metadata":{},"sourceType":"module"}
