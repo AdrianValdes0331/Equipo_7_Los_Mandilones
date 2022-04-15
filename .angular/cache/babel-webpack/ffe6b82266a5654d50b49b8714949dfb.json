@@ -1,0 +1,1 @@
+{"ast":null,"code":"// @internal\nexport function not(pred) {\n  return function (...args) {\n    return !pred(...args);\n  };\n} //# sourceMappingURL=not.js.map","map":null,"metadata":{},"sourceType":"module"}

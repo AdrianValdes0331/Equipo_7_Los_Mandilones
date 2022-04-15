@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { isNil } from './isNil'; // @internal\n\nexport function coerceArray(value) {\n  if (isNil(value)) {\n    return [];\n  }\n\n  return Array.isArray(value) ? value : [value];\n} //# sourceMappingURL=coerceArray.js.map","map":null,"metadata":{},"sourceType":"module"}

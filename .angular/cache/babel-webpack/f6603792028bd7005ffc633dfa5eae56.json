@@ -1,0 +1,1 @@
+{"ast":null,"code":"// @internal\nexport function hasEntity(entities, id) {\n  return entities.hasOwnProperty(id);\n} //# sourceMappingURL=hasEntity.js.map","map":null,"metadata":{},"sourceType":"module"}

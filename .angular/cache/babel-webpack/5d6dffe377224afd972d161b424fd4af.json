@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { isBrowser } from './root';\nexport let __DEV__ = true;\nexport function enableAkitaProdMode() {\n  __DEV__ = false;\n\n  if (isBrowser) {\n    delete window.$$stores;\n    delete window.$$queries;\n  }\n} // @internal\n\nexport function isDev() {\n  return __DEV__;\n} //# sourceMappingURL=env.js.map","map":null,"metadata":{},"sourceType":"module"}
