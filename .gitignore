@@ -36,3 +36,4 @@ yarn-error.log
 baseline.json
 package-lock.json
 .angulardoc.json
+.angular/cache
