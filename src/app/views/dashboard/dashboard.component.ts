@@ -11,8 +11,26 @@ import { Component } from '@angular/core';
 })
 
 export class DashboardComponent{
-    constructor() {
-        //
+  icono: string;
+  state: number;
+  constructor() { 
+    this.icono = 'favorite_border';
+    this.state = 1;
+  }
+
+  ngOnInit(): void {
+  }
+
+  onClick(){
+    console.log('click');
+    if(this.state === 1){
+        this.icono = 'favorite';
+        this.state = 2;
     }
+    else if (this.state === 2){
+        this.icono = 'favorite_border';
+        this.state = 1;
+    }
+  }
 }
 
