@@ -14,6 +14,8 @@ import { environment } from "src/environments/environment";
 })
 export class LoginComponent implements OnInit {
 
+  //userDisplayName = '';
+  
   constructor(
     private userStore: UserStore,
     private router: Router,
@@ -26,6 +28,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
 
     this.analytics.trigger();
+    //this.userDisplayName = sessionStorage.getItem('loggedUser');  
+
   }
 
   public mylogin(evt: any) {
@@ -47,6 +51,7 @@ export class LoginComponent implements OnInit {
           this.appStore.setTokens(userAuth.jwt, userAuth.oauth2);
           this.legalEntitiesService.getLegalEntities();
           this.router.navigate(["dashboard"]);
+          sessionStorage.setItem('loggedUser', userAuth.profile);
         });
     }
   }

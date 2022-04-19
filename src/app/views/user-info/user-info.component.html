@@ -1,12 +1,20 @@
 <style>
-    h1 {text-align: center;}
     .content {
       display: flex;
-      margin: 82px auto 32px;
+      margin: 8px auto 8px;
       padding: 0 16px;
       max-width: 960px;
       flex-direction: column;
       align-items: center;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 0px;
+    }
+
+    i {
+      margin-bottom: 8px;
     }
   
     svg.material-icons {
@@ -50,9 +58,6 @@
       margin-right: 0;
     }
   
-    i {
-      margin-bottom: 50px;
-    }
     .card.card-small {
       height: 16px;
       width: 168px;
@@ -80,14 +85,6 @@
       position: relative;
     }
   
-    svg#clouds {
-      position: fixed;
-      bottom: -160px;
-      left: -230px;
-      z-index: -10;
-      width: 1920px;
-    }
-  
     /* Responsive Styles */
     @media screen and (max-width: 767px) {
       .card-container > *:not(.circle-link) ,
@@ -102,9 +99,8 @@
     }
   </style>
 
-<h1>Hello User</h1>
-
 <div class="content" role="main">
+  <h1>Hello User</h1>
   <i class="fa fa-user" style="font-size:60px"></i>
     <div class="card highlight-card card-small">
         <span>{{ title }} Information </span>
