@@ -20,7 +20,6 @@ import { PagenotfoundComponent } from './views/pagenotfound/pagenotfound.compone
 import { SessionService } from './services/session.service';
 import { SharedPipeModule } from './pipes/pipes.module';
 import { TranslationService } from './services/translation.service';
-//import { UserInfoComponent } from './views/user-info/user-info.component';
 
 @NgModule({
     imports: [
@@ -41,7 +40,6 @@ import { TranslationService } from './services/translation.service';
     PagenotfoundComponent,
     LoginComponent,
     AppLayoutComponent,
-    //UserInfoComponent,
   ],
   providers: [
     TranslationService,
