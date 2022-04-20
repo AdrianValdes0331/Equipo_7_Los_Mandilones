@@ -1,128 +1,157 @@
 <style>
-    .content {
-      display: flex;
-      margin: 8px auto 8px;
-      padding: 0 16px;
-      max-width: 960px;
-      flex-direction: column;
-      align-items: center;
-    }
+  body{
+      margin-top:20px;
+      color: #1a202c;
+      text-align: left;
+      background-color: #e2e8f0;    
+  }
+  .main-body {
+      padding: 15px;
+  }
+  .card {
+      box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+  }
 
-    h1 {
-      text-align: center;
-      margin-top: 0px;
-    }
-
-    i {
-      margin-bottom: 8px;
-    }
-
-    table, th, td {
-      border:1px solid black;
-      margin-left: 30%;
-      height: 16px;
-      width: 168px;
-    }
-
-    svg.material-icons {
-      height: 24px;
-      width: auto;
-    }
-  
-    svg.material-icons:not(:last-child) {
-      margin-right: 8px;
-    }
-  
-    .card svg.material-icons path {
-      fill: #888;
-    }
-  
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 16px;
-    }
-  
-    .card {
-      all: unset;
-      border-radius: 4px;
-      border: 1px solid #eee;
-      background-color: #fafafa;
-      height: 40px;
-      width: 200px;
-      margin: 0 8px 16px;
-      padding: 16px;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      transition: all 0.2s ease-in-out;
-      line-height: 24px;
-    }
-  
-    .card-container .card:not(:last-child) {
-      margin-right: 0;
-    }
-  
-    .card.card-small {
-      height: 16px;
-      width: 168px;
-    }
-  
-    .card-container .card:not(.highlight-card) {
-      cursor: pointer;
-    }
-  
-    .card-container .card:not(.highlight-card):hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
-    }
-  
-    .card-container .card:not(.highlight-card):hover .material-icons path {
-      fill: rgb(105, 103, 103);
-    }
-  
-    .card.highlight-card {
-      background-color: #003876;
-      color: white;
-      font-weight: 600;
-      border: none;
-      width: auto;
+  .card {
       position: relative;
-    }
-  
-    /* Responsive Styles */
-    @media screen and (max-width: 767px) {
-      .card-container > *:not(.circle-link) ,
-      .terminal {
-        width: 100%;
-      }
-  
-      .card:not(.highlight-card) {
-        height: 16px;
-        margin: 8px 0;
-      }
-    }
-  </style>
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 0 solid rgba(0,0,0,.125);
+      border-radius: .25rem;
+  }
 
-<div class="content" role="main">
-  <h1>Hello User</h1>
-  <i class="fa fa-user" style="font-size:60px"></i>
-    <div class="card highlight-card card-small">
-        <span>{{ title }} Information </span>
-    </div>
-</div>
+  .card-body {
+      flex: 1 1 auto;
+      min-height: 1px;
+      padding: 1rem;
+  }
 
-<table>
-  <tr>
-    <th>Favoritos</th>
-  </tr>
-  <tr>
-    <td>App#1</td>
-  </tr>
-  <tr>
-    <td>App#2</td>
-  </tr>
-</table>
+  .gutters-sm {
+      margin-right: -8px;
+      margin-left: -8px;
+  }
+
+  .gutters-sm>.col, .gutters-sm>[class*=col-] {
+      padding-right: 8px;
+      padding-left: 8px;
+  }
+  .mb-3, .my-3 {
+      margin-bottom: 1rem!important;
+  }
+
+  .bg-gray-300 {
+      background-color: #e2e8f0;
+  }
+  .h-100 {
+      height: 100%!important;
+  }
+  .shadow-none {
+      box-shadow: none!important;
+  }
+</style>
+
+<div class="container">
+  <div class="main-body">
+        <!-- /Breadcrumb -->
   
+        <div class="row gutters-sm">
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex flex-column align-items-center text-center">
+                  <img src="https://icon-library.com/images/default-user-icon/default-user-icon-8.jpg" alt="Admin" class="rounded-circle" width="150"> 
+                  <div class="mt-3">
+                    <h4>User: APIROS S A S</h4>
+                    <p class="text-secondary mb-1">Cod: 50118065</p>
+                    <p class="text-muted font-size-sm">Place: Colombia</p>
+                    <button class="btn btn-outline-primary">Edit Image</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="card mb-3">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Full Name</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary" style="margin-top: 50px;">
+                    APIROS SAS
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Email</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary" style="margin-top: 50px;">
+                    apiros@mailinator.com
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Phone</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary" style="margin-top: 50px;">
+                    1112223338
+                  </div>
+                </div>
+                <hr>
+              </div>
+            </div>
+
+            <div class="row gutters-sm">
+              <div class="col-sm-6 mb-3">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">favorites</i>Favorites</h6>
+                    <button class="btn btn-outline-primary">App#1</button>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <button class="btn btn-outline-primary">App#2</button>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <button class="btn btn-outline-primary">App#3</button>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <button class="btn btn-outline-primary">App#4</button>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <button class="btn btn-outline-primary">App#5</button>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 mb-3">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Pending</h6>
+                    <small>Saludar a John</small>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <small>Revisar Pedido #3</small>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+  </div>
