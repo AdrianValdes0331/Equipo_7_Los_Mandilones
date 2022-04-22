@@ -37,3 +37,4 @@ baseline.json
 package-lock.json
 .angulardoc.json
 .angular/cache
+yarn.lock
