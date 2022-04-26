@@ -222,102 +222,14 @@
 
 <div class="content" role="main">
   <div class="card-container">
+      <div class="card" target="_blank" rel="noopener" *ngFor="let obj of fakeArray(12); index as i">
+        <mat-button-toggle #state (change) = "onClick(state.checked, i)" [checked]="favorited[i]!=undefined"> 
+          <mat-icon> {{state.checked ? "favorite" : "favorite_border"}} </mat-icon>
+        </mat-button-toggle>
+        <a href="https://angular.io/tutorial">App#{{i}}</a>
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      </div>
     
-    <div class="card" target="_blank" rel="noopener">
-      <button (click) = "onClick()"> 
-        <mat-icon> {{icono}} </mat-icon>
-      </button>
-      <a href="https://angular.io/tutorial">App#1</a>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </div>
-
-    <div class="card" target="_blank" rel="noopener">
-      <button (click) = "onClick()"> 
-        <mat-icon> {{icono}} </mat-icon>
-      </button>
-      <a href="https://angular.io/tutorial">App#2</a>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </div>
-
-    <div class="card" target="_blank" rel="noopener">
-      <button (click) = "onClick()"> 
-        <mat-icon> {{icono}} </mat-icon>
-      </button>
-      <a href="https://angular.io/tutorial">App#3</a>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </div>
-
-    <div class="card" target="_blank" rel="noopener">
-      <button (click) = "onClick()"> 
-        <mat-icon> {{icono}} </mat-icon>
-      </button>
-      <a href="https://angular.io/tutorial">App#4</a>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </div>
-
-    <div class="card" target="_blank" rel="noopener">
-      <button (click) = "onClick()"> 
-        <mat-icon> {{icono}} </mat-icon>
-      </button>
-      <a href="https://angular.io/tutorial">App#5</a>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </div>
-
-    <div class="card" target="_blank" rel="noopener">
-      <button (click) = "onClick()"> 
-        <mat-icon> {{icono}} </mat-icon>
-      </button>
-      <a href="https://angular.io/tutorial">App#6</a>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </div>
-
-    <div class="card" target="_blank" rel="noopener">
-      <button (click) = "onClick()"> 
-        <mat-icon> {{icono}} </mat-icon>
-      </button>
-      <a href="https://angular.io/tutorial">App#7</a>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </div>
-
-    <div class="card" target="_blank" rel="noopener">
-      <button (click) = "onClick()"> 
-        <mat-icon> {{icono}} </mat-icon>
-      </button>
-      <a href="https://angular.io/tutorial">App#8</a>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </div>
-
-    <div class="card" target="_blank" rel="noopener">
-      <button (click) = "onClick()"> 
-        <mat-icon> {{icono}} </mat-icon>
-      </button>
-      <a href="https://angular.io/tutorial">App#9</a>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </div>
-
-    <div class="card" target="_blank" rel="noopener">
-      <button (click) = "onClick()"> 
-        <mat-icon> {{icono}} </mat-icon>
-      </button>
-      <a href="https://angular.io/tutorial">App#10</a>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </div>
-
-    <div class="card" target="_blank" rel="noopener">
-      <button (click) = "onClick()"> 
-        <mat-icon> {{icono}} </mat-icon>
-      </button>
-      <a href="https://angular.io/tutorial">App#11</a>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </div>
-
-    <div class="card" target="_blank" rel="noopener">
-      <button (click) = "onClick()"> 
-        <mat-icon> {{icono}} </mat-icon>
-      </button>
-      <a href="https://angular.io/tutorial">App#12</a>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </div>
 
   </div>
 </div>

@@ -3,6 +3,7 @@ import { Image } from 'src/app/models/image.model';
 import * as moment from 'moment';
 
 import { Component } from '@angular/core';
+import { FavoriteService } from "src/app/services/favorite.service"
 
 @Component({
     selector: 'app-dashboard',
@@ -13,23 +14,29 @@ import { Component } from '@angular/core';
 export class DashboardComponent{
   icono: string;
   state: number;
-  constructor() { 
+  constructor(
+    private favoriteService: FavoriteService
+  ) { 
     this.icono = 'favorite_border';
     this.state = 1;
   }
 
+  favorited = this.favoriteService.getFavorites();
+
   ngOnInit(): void {
   }
 
-  onClick(){
+  fakeArray(num){
+    return new Array(num);
+  }
+
+  onClick(b: boolean, i: number){
     console.log('click');
-    if(this.state === 1){
-        this.icono = 'favorite';
-        this.state = 2;
+    if(b && this.favoriteService.favorites[i]==undefined){
+      this.favoriteService.addToFavorites(i, "https://angular.io/tutorial");
     }
-    else if (this.state === 2){
-        this.icono = 'favorite_border';
-        this.state = 1;
+    else if(!b && this.favoriteService.favorites[i]!=undefined){
+      this.favoriteService.removeFromFavorites(i);
     }
   }
 }
