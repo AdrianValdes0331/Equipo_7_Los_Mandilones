@@ -6,12 +6,11 @@
 <h2>AVAILABLE APPS</h2>
   
 <div id="myBtnContainer">
-  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-  <button class="btn" onclick="filterSelection('nature')"> Analitics </button>
-  <button class="btn" onclick="filterSelection('cars')"> Automation </button>
-  <button class="btn" onclick="filterSelection('people')"> Visualization </button>
+  <button class="btn"> Show all</button>
+  <button class="btn"> Analitics </button>
+  <button class="btn"> Automation </button>
+  <button class="btn"> Visualization </button>
 </div>
-
 <div class="content" role="main">
   <div class="card-container">
       <div class="card" target="_blank" rel="noopener" *ngFor="let obj of fakeArray(12); index as i">
