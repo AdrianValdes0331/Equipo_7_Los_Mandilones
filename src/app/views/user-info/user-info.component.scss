@@ -26,14 +26,21 @@ button {
 
   .button4:hover {background-color: #e7e7e7;}
 
-  body{
-      margin-top: 20px;
-      color: #1a202c;
-      text-align: left;
-      background-color: #e2e8f0;    
+  body {
+    background-color: #f1f1f1;
+    padding: 20px;
+    font-family: Arial;
   }
-  .main-body {
-      padding: 15px;
+
+  /* Center website */
+  .main {
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  h1 {
+    font-size: 50px;
+    word-break: break-all;
   }
   .card {
       box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
@@ -55,6 +62,13 @@ button {
       flex: 1 1 auto;
       min-height: 1px;
       padding: 1rem;
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
   }
 
   .gutters-sm {
@@ -100,3 +114,5 @@ button {
   .btn:hover {
     background-color: #ddd;
   }
+
+  
