@@ -347,7 +347,7 @@ body {
     display: flex;
     margin: 75px auto 20px;
     padding: 0 16px;
-    max-width: 960px;
+    max-width: 1000px;
     flex-direction: column;
     align-items: center;
   }
@@ -450,17 +450,5 @@ body {
 
     .card.highlight-card span {
       margin-left: 72px;
-    }
-
-    svg#rocket-smoke {
-      right: 120px;
-      transform: rotate(-5deg);
-    }
-  }
-
-  @media screen and (max-width: 575px) {
-    svg#rocket-smoke {
-      display: none;
-      visibility: hidden;
     }
   }

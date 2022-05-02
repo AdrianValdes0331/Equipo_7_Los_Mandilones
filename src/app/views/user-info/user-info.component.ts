@@ -18,7 +18,7 @@ export class UserInfoComponent implements OnInit {
   }
 
   url: any; //Angular 11, for stricter type
-	msg = "";
+	msg = "Please Select a Profile Image";
 	
 	//selectFile(event) { //Angular 8
 	selectFile(event: any) { //Angular 11, for stricter type
@@ -42,13 +42,6 @@ export class UserInfoComponent implements OnInit {
 			this.url = reader.result; 
 		}
 	}
-
-  /*onFileSelected(event) {
-    const file:File = event.target.files[0];
-    if (file) {
-      this.img = File.arguments;
-    }
-  }*/
 
   favorited = this.favoriteService.getFavorites();
   fKeys = Object.keys(this.favorited);
