@@ -12,8 +12,11 @@ import { FavoriteService } from "src/app/services/favorite.service"
 })
 
 export class DashboardComponent{
+  filteredApps = 'All';
+  options = ["Analitics", "Automation", "Visualization"];
   icono: string;
   state: number;
+  categor: string;
   constructor(
     private favoriteService: FavoriteService
   ) { 
@@ -24,6 +27,11 @@ export class DashboardComponent{
   favorited = this.favoriteService.getFavorites();
 
   ngOnInit(): void {
+  }
+
+  getFilter(){
+    this.categor =  this.options[Math.floor(Math.random() * this.options.length)];
+    return this.categor;
   }
 
   fakeArray(num){
