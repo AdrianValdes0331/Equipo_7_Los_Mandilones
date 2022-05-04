@@ -20,6 +20,7 @@ import { PagenotfoundComponent } from './views/pagenotfound/pagenotfound.compone
 import { SessionService } from './services/session.service';
 import { SharedPipeModule } from './pipes/pipes.module';
 import { TranslationService } from './services/translation.service';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
     imports: [
@@ -44,6 +45,7 @@ import { TranslationService } from './services/translation.service';
   providers: [
     TranslationService,
   { provide: HTTP_INTERCEPTORS, useClass: CmxAPIInterceptor, multi: true },
+  {provide: LocationStrategy, useClass: HashLocationStrategy},
   LegalEntityService,
   CountryService,
   AnalyticsService,

@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
     private userQuery: UserQuery,
     private legalEntitiesService: LegalEntityService
   ) {
+    localStorage.clear();
     akitaDevtools(this.ngZone, {});
     from(this.translationService.loadTranslations()).subscribe((result) => {
       this.loadingCompleted = Boolean(result);
