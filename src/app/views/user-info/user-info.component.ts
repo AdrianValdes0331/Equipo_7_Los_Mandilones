@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { FavoriteService } from "src/app/services/favorite.service"
+import { Url } from 'url';
 
 @Component({
   selector: 'app-user-info',
@@ -9,28 +10,27 @@ import { FavoriteService } from "src/app/services/favorite.service"
 })
 
 export class UserInfoComponent implements OnInit {
-
+	url: any; //Angular 11, for stricter type
   constructor(
     private favoriteService: FavoriteService
-  ) { }
+  ) { 
+	this.url = ('https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png');
+  }
   title = 'User ';
   ngOnInit(): void {
   }
-
-  url: any; //Angular 11, for stricter type
-	msg = "Please Select a Profile Image";
 	
 	//selectFile(event) { //Angular 8
 	selectFile(event: any) { //Angular 11, for stricter type
 		if(!event.target.files[0] || event.target.files[0].length == 0) {
-			this.msg = 'You must select an image';
+			this.url = new URL("https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png");
 			return;
 		}
 		
 		var mimeType = event.target.files[0].type;
 		
 		if (mimeType.match(/image\/*/) == null) {
-			this.msg = "Only images are supported";
+			this.url = new URL("https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png");
 			return;
 		}
 		
@@ -38,7 +38,7 @@ export class UserInfoComponent implements OnInit {
 		reader.readAsDataURL(event.target.files[0]);
 		
 		reader.onload = (_event) => {
-			this.msg = "";
+			//this.msg = null;
 			this.url = reader.result; 
 		}
 	}
