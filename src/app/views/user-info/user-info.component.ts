@@ -43,8 +43,8 @@ export class UserInfoComponent implements OnInit {
 		}
 	}
 
-  favorited = this.favoriteService.getFavorites();
+  /*favorited = this.favoriteService.getFavorites();
   fKeys = Object.keys(this.favorited);
-  fVals = Object.values(this.favorited);
+  fVals = Object.values(this.favorited);*/
 
 }
