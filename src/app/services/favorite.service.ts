@@ -25,6 +25,5 @@ export class FavoriteService {
 
   }
 
-
   constructor() { }
 }
