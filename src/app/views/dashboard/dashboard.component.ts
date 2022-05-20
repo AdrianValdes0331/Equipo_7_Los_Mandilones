@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FavoriteService } from "src/app/services/favorite.service"
+import { toInteger } from 'lodash';
 
 @Component({
     selector: 'app-dashboard',
@@ -14,7 +15,6 @@ import { FavoriteService } from "src/app/services/favorite.service"
 
 export class DashboardComponent{
   filteredApps = 'All';
-  options = ["Analitics", "Automation", "Visualization"];
   icono: string;
   state: number;
   nstate: number;
@@ -35,11 +35,6 @@ export class DashboardComponent{
   ngOnInit(): void {
   }
 
-  getFilter(){
-    this.categor =  this.options[Math.floor(Math.random() * this.options.length)];
-    return this.categor;
-  }
-
   fakeArray(num){
     return new Array(num);
   }
@@ -49,19 +44,25 @@ export class DashboardComponent{
     return this.nstate;
   }
 
-  onClick(b: boolean, i: number){
+  onClick(b: boolean, i: string){
     console.log('click');
-    if(b && this.favoriteService.favorites[i]==undefined){
-      this.favoriteService.addToFavorites(i, "https://angular.io/tutorial");
+    var j = parseInt(i);
+    if(b && this.favoriteService.favorites[j]==undefined){
+      this.favoriteService.addToFavorites(j, "https://angular.io/tutorial");
     }
-    else if(!b && this.favoriteService.favorites[i]!=undefined){
-      this.favoriteService.removeFromFavorites(i);
+    else if(!b && this.favoriteService.favorites[j]!=undefined){
+      this.favoriteService.removeFromFavorites(j);
     }
-    //Try to find better way
-    let currentUrl = this.router.url;
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-        this.router.navigate([currentUrl]);
-    });
+    //We found the Way
+    this.fKeys = Object.keys(this.favorited);
+    this.fVals = Object.values(this.favorited);
+  }
+
+  onErase(b: boolean, i: string){
+    var j = parseInt(i);
+    if(!b && this.favoriteService.favorites[j]!=undefined){
+      this.favoriteService.removeFromFavorites(j);
+    }
   }
 
 }

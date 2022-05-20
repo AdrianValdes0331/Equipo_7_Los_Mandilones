@@ -20,15 +20,14 @@
         </mat-button-toggle>
         <a href="https://angular.io/tutorial">App#{{i}}</a>
         <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-        <!--Cat: {{getFilter()}}-->
       </div>
     </div>
   </div>
   <div *ngIf = "nstate == 2">
     <div class="card-container">
-      <div class="card" target="_blank" rel="noopener" *ngFor="let favorite of fVals; index as i">
-        <mat-button-toggle> 
-          <mat-icon> favorite </mat-icon>
+      <div class="card" target="_blank" rel="noopener" *ngFor="let favorite of fKeys; index as i">
+        <mat-button-toggle #state (change) = "onClick(state.checked, fKeys[i])" [checked]="favorited[fKeys[i]]!=undefined"> 
+          <mat-icon>  {{state.checked ? "favorite" : "favorite_border"}} </mat-icon>
         </mat-button-toggle>
         <a [href]="favorite">
           <a class="button button4">App#{{fKeys[i]}}</a>
