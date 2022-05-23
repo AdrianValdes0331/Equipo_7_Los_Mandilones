@@ -16,8 +16,8 @@ const options = {
 export class FavoriteService {
   private apiUrl = "'http://localhost:5000/api"
   constructor(private http: HttpClient) {}
-  addToFavorites(user: User, id: string, link: string){
-    return this.http.put<User>(this.apiUrl + '/addFavorite' + user.id, item, options);
+  addToFavorites(user: User, id: string, link: string): Observable<User>{
+    return this.http.put<User>(this.apiUrl + '/addFavorite' + user.id, {id: link}, options);
   	
   }
 
@@ -25,7 +25,7 @@ export class FavoriteService {
   	
   }
 
-  getFavorites(){
-  	
+  getFavorites(): Observable<User[]>{
+  	 return this.http.get<User[]>(this.apiUrl+"favorites");
   }
 }

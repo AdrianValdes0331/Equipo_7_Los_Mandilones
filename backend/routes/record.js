@@ -28,7 +28,22 @@ recordRoutes.route("/api/favorites").get(async function(_req, res){
 //Add favorites of user with id
 recordRoutes.route("api/addFavorite/:id").post(function (req, res) {
   const dbConnect = dbo.getDb();
-  const userId = 
+  const userQuery = {_id: req.params.id}
+  const updates = {
+    $push:
+      {favorites: req.body}
+  }
+  const options = { upsert: true}
+  dbConnect
+    .collection("users")
+    .updateOne(userQuery, updates, options, function (err, _result) {
+      if (err){
+        res.status(400).send("Error updating favorites with id ${userQuery.id}!")
+      } 
+      else{
+        console.log("1 document updated");
+      }
+    });
 });
 
 //Remove favorites of user with id
