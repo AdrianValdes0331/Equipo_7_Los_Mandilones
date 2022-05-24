@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { isArray } from './isArray'; // @internal\n\nexport function isEmpty(arr) {\n  if (isArray(arr)) {\n    return arr.length === 0;\n  }\n\n  return false;\n} //# sourceMappingURL=isEmpty.js.map","map":null,"metadata":{},"sourceType":"module"}

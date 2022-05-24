@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { t as tuple } from './index-eb5f436d.js';\nconst cwcTableSortOrder = tuple('none', 'asc', 'desc');\nexport { cwcTableSortOrder as c };","map":null,"metadata":{},"sourceType":"module"}

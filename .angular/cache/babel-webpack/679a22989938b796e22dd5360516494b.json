@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { toBoolean } from './toBoolean'; // @internal\n\nexport function isPlainObject(value) {\n  return toBoolean(value) && value.constructor.name === 'Object';\n} //# sourceMappingURL=isPlainObject.js.map","map":null,"metadata":{},"sourceType":"module"}

@@ -1,1 +1,0 @@
-{"ast":null,"code":"// @internal\nexport class AkitaError extends Error {\n  constructor(message) {\n    super(message);\n  }\n\n} // @internal\n\nexport function assertStoreHasName(name, className) {\n  if (!name) {\n    console.error(`@StoreConfig({ name }) is missing in ${className}`);\n  }\n} //# sourceMappingURL=errors.js.map","map":null,"metadata":{},"sourceType":"module"}

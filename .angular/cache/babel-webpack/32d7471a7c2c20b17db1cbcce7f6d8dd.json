@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { combineLatest } from 'rxjs';\nimport { auditTime } from 'rxjs/operators';\nexport function combineQueries(observables) {\n  return combineLatest(observables).pipe(auditTime(0));\n} //# sourceMappingURL=combineQueries.js.map","map":null,"metadata":{},"sourceType":"module"}

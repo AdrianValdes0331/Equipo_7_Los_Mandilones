@@ -1,1 +1,0 @@
-{"ast":null,"code":"// @internal\nexport function isArray(value) {\n  return Array.isArray(value);\n} //# sourceMappingURL=isArray.js.map","map":null,"metadata":{},"sourceType":"module"}
