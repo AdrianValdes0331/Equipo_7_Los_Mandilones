@@ -1,6 +1,6 @@
 export interface User {
-    id: string;
+    uid: string;
     name: string;
     email: string;
-    favorites:  {[id: string]: string;};
+    favorites:  {[key: string]: string};
   }

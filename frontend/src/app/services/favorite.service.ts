@@ -17,17 +17,17 @@ export class FavoriteService {
   private apiUrl = "http://localhost:5000/api"
   constructor(private http: HttpClient) {}
   addToFavorites(user: User, id: string, link: string): Observable<User>{
-    return this.http.post<User>(this.apiUrl + '/addFavorite/' + user.id, {id: link}, options);
+    return this.http.post<User>(this.apiUrl + '/addFavorite/' + user.uid, {[id]: link}, options);
   	
   }
 
   removeFromFavorites(user: User, id: string): Observable<User>{
   
-    return this.http.post<User>(this.apiUrl+"/removeFavorite/" + user.id, id, options)
+    return this.http.post<User>(this.apiUrl+"/removeFavorite/" + user.uid, id, options)
 
   }
 
-  getFavorites(): Observable<User>{
-  	 return this.http.get<User>(this.apiUrl+"/favorites/");
+  getFavorites(id: string): Observable<User>{
+  	 return this.http.get<User>(this.apiUrl+"/favorites/"+id);
   }
 }

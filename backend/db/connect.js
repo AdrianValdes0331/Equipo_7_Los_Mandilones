@@ -14,7 +14,7 @@ module.exports = {
         return callback(err);
       }
 
-      dbConnection = db.db("sample_airbnb");
+      dbConnection = db.db("cemex_dashboard");
       console.log("Successfully connected to MongoDB.");
 
       return callback();

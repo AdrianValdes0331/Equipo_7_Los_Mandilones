@@ -23,7 +23,7 @@ export class DashboardComponent{
   state: number;
   nstate: number;
   categor: string;
-  favorited: {[id: string]: string};
+  favorited: {[key: string]: string}
 
   constructor(
     private userQuery: UserQuery,
@@ -33,7 +33,7 @@ export class DashboardComponent{
     this.icono = 'favorite_border';
     this.state = 1;
     this.nstate = 1;
-    this.favorited = {};
+    this.favorited = {}
   }
 
   userP:UserProfile;
@@ -41,8 +41,8 @@ export class DashboardComponent{
   fVals;
 
   ngOnInit(): void {
-    this.favoriteService.getFavorites().subscribe((user) => (this.favorited = user.favorites));
     this.userQuery.selectUserProfile$.subscribe((profile) => (this.userP = profile));
+    this.favoriteService.getFavorites(this.userP.userId.toString()).subscribe((user) => (this.favorited = user.favorites));
   }
 
   fakeArray(num){
@@ -56,8 +56,9 @@ export class DashboardComponent{
 
   onClick(b: boolean, i: string){
     console.log('click');
+    console.log(this.favorited);
     var j = parseInt(i);
-    var tempUser:User = {id: this.userP.userId.toString(), name: this.userP.fullName, email: this.userP.userAccount, favorites: this.favorited};
+    var tempUser:User = {uid: this.userP.userId.toString(), name: this.userP.fullName, email: this.userP.userAccount, favorites: this.favorited};
     console.log(tempUser);
     console.log(i);
     console.log(b);
@@ -75,7 +76,7 @@ export class DashboardComponent{
 
   onErase(b: boolean, i: string){
     var j = parseInt(i);
-    var tempUser:User = {id: this.userP.userId.toString(), name: this.userP.fullName, email: this.userP.userAccount, favorites: this.favorited};
+    var tempUser:User = {uid: this.userP.userId.toString(), name: this.userP.fullName, email: this.userP.userAccount, favorites: this.favorited};
     if(!b && this.favorited[j]!=undefined){
       this.favoriteService.removeFromFavorites(tempUser, i);
     }
