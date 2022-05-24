@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
             userAuth.profile
           );
           console.log(userAuth.country);
-          this.localeStore.setActiveLanguage(userAuth.country);
+          //this.localeStore.setActiveLanguage(userAuth.country);
           console.log(userAuth.country);
           this.appStore.setTokens(userAuth.jwt, userAuth.oauth2);
           this.legalEntitiesService.getLegalEntities();
