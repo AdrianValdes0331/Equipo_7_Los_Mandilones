@@ -42,7 +42,11 @@ export class DashboardComponent{
 
   ngOnInit(): void {
     this.userQuery.selectUserProfile$.subscribe((profile) => (this.userP = profile));
-    this.favoriteService.getFavorites(this.userP.userId.toString()).subscribe((user) => (this.favorited = user.favorites));
+    this.favoriteService.getFavorites(this.userP.userId.toString()).subscribe((user) => {
+      this.favorited = user.favorites;
+      this.fKeys = Object.keys(this.favorited);
+      this.fVals = Object.values(this.favorited);
+    });
   }
 
   fakeArray(num){
@@ -62,25 +66,31 @@ export class DashboardComponent{
     console.log(tempUser);
     console.log(i);
     console.log(b);
-    console.log(this.favorited[j]==undefined);
-    if(b && this.favorited[j]==undefined){
-      this.favoriteService.addToFavorites(tempUser, i, "https://angular.io/tutorial").subscribe((user) => (this.favorited = user.favorites));
+    console.log(this.favorited[i]==undefined);
+    if(b && this.favorited[i]==undefined){
+      this.favoriteService.addToFavorites(tempUser, i, "https://angular.io/tutorial").subscribe((user) => {
+        this.favorited = user.favorites
+        this.fKeys = Object.keys(this.favorited);
+        this.fVals = Object.values(this.favorited);
+      });
     }
-    else if(!b && this.favorited[j]!=undefined){
-      this.favoriteService.removeFromFavorites(tempUser, i).subscribe((user) => (this.favorited = user.favorites));
+    else if(!b && this.favorited[i]!=undefined){
+      this.favoriteService.removeFromFavorites(tempUser, i).subscribe((user) => {
+        this.favorited = user.favorites
+        this.fKeys = Object.keys(this.favorited);
+        this.fVals = Object.values(this.favorited);
+      });
     }
     //We found the Way
-    this.fKeys = Object.keys(this.favorited);
-    this.fVals = Object.values(this.favorited);
   }
 
-  onErase(b: boolean, i: string){
-    var j = parseInt(i);
-    var tempUser:User = {uid: this.userP.userId.toString(), name: this.userP.fullName, email: this.userP.userAccount, favorites: this.favorited};
-    if(!b && this.favorited[j]!=undefined){
-      this.favoriteService.removeFromFavorites(tempUser, i);
-    }
-  }
+  // onErase(b: boolean, i: string){
+  //   var j = parseInt(i);
+  //   var tempUser:User = {uid: this.userP.userId.toString(), name: this.userP.fullName, email: this.userP.userAccount, favorites: this.favorited};
+  //   if(!b && this.favorited[j]!=undefined){
+  //     this.favoriteService.removeFromFavorites(tempUser, i);
+  //   }
+  // }
 
 }
 

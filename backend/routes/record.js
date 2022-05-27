@@ -27,30 +27,27 @@ recordRoutes.route("/api/favorites/:id").get(async function(req, res){
 
 //Add favorites of user with id
 recordRoutes.route("/api/addFavorite/:id").post(function (req, res) {
-  console.log(0);
   const dbConnect = dbo.getDb();
-  console.log(1);
   const userQuery = {uid: req.params.id}
-  console.log(2);
+  const obj = {};
+  obj["favorites."+Object.keys(req.body)[0]] = Object.values(req.body)[0];
   const updates = {
-    $push:
-      {favorites: req.body}
+    $set: obj
   }
-  console.log(3);
-  const options = { upsert: true};
+  const options = { upsert: true, returnDocument: "after" };
   console.log(req.params.id);
   console.log(req.body);
   dbConnect
     .collection("users")
-    .updateOne(userQuery, updates, options, function (err, result) {
+    .findOneAndUpdate(userQuery, updates, options, function (err, result) {
       if (err){
         console.log(err);
         res.status(400).send("Error updating favorites with id ${userQuery.id}!");
       } 
       else{
         console.log("1 document updated");
-        //console.log(result);
-        //res.json(result);
+        console.log(result.value);
+        res.json(result.value);
       }
     });
 });
@@ -58,21 +55,21 @@ recordRoutes.route("/api/addFavorite/:id").post(function (req, res) {
 recordRoutes.route("/api/removeFavorite/:id").post(function (req, res) {
   const dbConnect = dbo.getDb();
   const userQuery = {uid: req.params.id}
+  console.log(req.body)
   const updates = {
-    $pull:
-      {favorites: req.body}
+    $unset: req.body
   }
-  const options = { upsert: true}
+  const options = { upsert: true, returnDocument: "after" }
   dbConnect
     .collection("users")
-    .updateOne(userQuery, updates, options, function (err, result) {
+    .findOneAndUpdate(userQuery, updates, options, function (err, result) {
       if (err){
         res.status(400).send("Error updating favorites with id ${userQuery.id}!")
       } 
       else{
         console.log("1 document updated");
-        //console.log(result);
-        //res.json(result);
+        console.log(result.value);
+        res.json(result.value);
       }
     });
 });

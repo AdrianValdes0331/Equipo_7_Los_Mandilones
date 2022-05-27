@@ -23,7 +23,7 @@ export class FavoriteService {
 
   removeFromFavorites(user: User, id: string): Observable<User>{
   
-    return this.http.post<User>(this.apiUrl+"/removeFavorite/" + user.uid, id, options)
+    return this.http.post<User>(this.apiUrl+"/removeFavorite/" + user.uid, {["favorites."+id]: ""}, options)
 
   }
 
