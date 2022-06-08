@@ -5,10 +5,13 @@
   
 <h2>AVAILABLE APPS</h2>
   
-<div id="myBtnContainer">
-  <button class="btn" (click)="CheckState(1)"> Show all </button>
-  <button class="btn" (click)="CheckState(2)"> Favorites </button>
-  <button class="btn"> Search </button>
+<div class="container">
+  <button class="btn filter" (click)="CheckState(1)"> Show all </button>
+  <button class="btn filter" (click)="CheckState(2)"> Favorites </button>
+  <form class="search_bar" [formGroup]="newSearchForm" (submit)="onSubmit(3)">
+    <input type="text" placeholder="Search by name..." formControlName="search_text">
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
 </div>
 
 <div class="content" role="main">
@@ -18,7 +21,7 @@
         <mat-button-toggle #state (change) = "onClick(state.checked, i)" [checked]="favorited[i]!=undefined"> 
           <mat-icon> {{state.checked ? "favorite" : "favorite_border"}} </mat-icon>
         </mat-button-toggle>
-        <a href="https://angular.io/tutorial">App#{{i}}</a>
+        <a href="https://angular.io/tutorial">Aplication{{i}}</a>
         <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
       </div>
     </div>
@@ -30,8 +33,19 @@
           <mat-icon>  {{state.checked ? "favorite" : "favorite_border"}} </mat-icon>
         </mat-button-toggle>
         <a [href]="favorite">
-          <a class="button button4">App#{{fKeys[i]}}</a>
+          <a class="button button4">Aplication{{fKeys[i]}}</a>
         </a>
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      </div>
+    </div>
+  </div>
+  <div *ngIf = "nstate == 3">
+    <div class="card-container">
+      <div class="card" target="_blank" rel="noopener" *ngFor="let match of mKeys; index as i">
+        <mat-button-toggle #state (change) = "onClick(state.checked, mKeys[i])" [checked]="favorited[mKeys[i]]!=undefined"> 
+          <mat-icon>  {{state.checked ? "favorite" : "favorite_border"}} </mat-icon>
+        </mat-button-toggle>
+        <a href="https://angular.io/tutorial">{{mVals[i][0]}}</a>
         <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
       </div>
     </div>

@@ -1,7 +1,8 @@
 import { CmxWebComponentsModule } from '@cmx-web-components/angular';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedPipeModule } from 'src/app/pipes/pipes.module';
@@ -16,6 +17,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
         CmxWebComponentsModule,
         FormsModule,
         SharedPipeModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
         RouterModule.forChild([
             {
                 path: '',
