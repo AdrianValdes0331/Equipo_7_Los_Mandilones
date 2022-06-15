@@ -41,11 +41,17 @@ export class LoginComponent implements OnInit {
           const userAuth = JSON.parse(
             new TextDecoder("utf-8").decode(stream.value)
           );
+          for (let i in userAuth.applications){
+
+            userAuth.applications[i].applicationLink = "https://angular.io/tutorial";
+
+          }
           this.userStore.setUser(
             userAuth.applications,
             userAuth.customer,
             userAuth.customerId,
-            userAuth.profile
+            userAuth.profile,
+            userAuth.country
           );
           console.log(userAuth.country);
           //this.localeStore.setActiveLanguage(userAuth.country);

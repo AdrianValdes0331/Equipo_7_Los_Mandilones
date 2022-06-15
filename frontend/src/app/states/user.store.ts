@@ -42,14 +42,15 @@ export class UserStore extends EntityStore<UserState> {
      * @param customerIds 
      * @param profiles 
      */
-    public setUser(application: any, customers: any, customerIds: number, profiles: any) {
+    public setUser(application: any, customers: any, customerIds: number, profiles: any, country: any) {
       this.update(state => ({
         ...state,
         isLogged: true,
         applications: application,
         customer: customers,
         customerId: customerIds,
-        profile: profiles
+        profile: profiles,
+        country: country
       }));
     }
 

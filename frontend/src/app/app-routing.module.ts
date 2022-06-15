@@ -43,6 +43,7 @@ const routes: Routes = [
           ),
       },
     ],
+    canActivate: [AuthenticationGuardService]
   },
 
   // redirect to page not found

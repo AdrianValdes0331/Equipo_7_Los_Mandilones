@@ -12,6 +12,8 @@ import { toInteger } from 'lodash';
 import { UserState, UserStore } from 'src/app/states/user.store';
 import { User } from "src/app/models/user.model";
 import { UserProfile } from 'src/app/models/user-profile.model';
+import { Application } from 'src/app/models/application.model';
+
 import { UserQuery } from "src/app/queries/user.queries";
 
 @Component({
@@ -27,7 +29,8 @@ export class DashboardComponent{
   nstate: number;
   categor: string;
   newSearchForm: FormGroup;
-  favorited: {[key: string]: string}
+  favorited: {[key: number]: Application};
+  userA:Application[];
 
   constructor(
     private userQuery: UserQuery,
@@ -43,19 +46,18 @@ export class DashboardComponent{
     this.newSearchForm = new FormGroup({
       search_text: new FormControl('',Validators.required)
     })
-    this.fillArray();
-    this.favorited = {}
+    //this.fillArray();
+    this.favorited = {};
+    this.userA = [];
   }
 
   userP:UserProfile;
-  fKeys;
-  fVals;
   matched = this.matchService.getMatches();
   applications = this.applicationService.getApplications();
-  aVals = Object.values(this.applications);
-  aKeys = Object.keys(this.applications);
-  mKeys = Object.keys(this.matched);
-  mVals = Object.values(this.matched);
+  // aVals = Object.values(this.applications);
+  // aKeys = Object.keys(this.applications);
+  // mKeys = Object.keys(this.matched);
+  // mVals = Object.values(this.matched);
 
   search(application,data): boolean {
     return application.toLowerCase().includes(data.toLowerCase());
@@ -72,20 +74,20 @@ export class DashboardComponent{
     }
     else {
       //Se recorre cada una de las aplicaciones para encontrar matches
-      for(let i = 0;i < this.aVals.length;i++) {
-        var found = this.search(this.aVals[i][0],data);
+      for(let i = 0;i < this.userA.length;i++) {
+        var found = this.search(this.userA[i].applicationName,data);
         //En caso de haber match, se agrega a arreglo de matches
         if(found) {
-          var key = parseInt(this.aKeys[i]);
+          // var key = parseInt(this.aKeys[i]);
           //Se verifica que no se tenga ya dentro del arreglo para evitar sobrecargas
-          if(this.matchService.matches[key]==undefined) {
-            this.matchService.addToMatches(key,this.aVals[i][0],this.aVals[i][1]);
+          if(this.matchService.matches[this.userA[i].applicationId]==undefined) {
+            this.matchService.addToMatches(this.userA[i]);
           } 
         }
       }
       //Se actualizan los arreglos de matches
-      this.mKeys = Object.keys(this.matched)
-      this.mVals = Object.values(this.matched)
+      // this.mKeys = Object.keys(this.matched)
+      // this.mVals = Object.values(this.matched)
       //Se actualiza el estado para el despliegue de aplicaciones
       this.CheckState(nState);      
     }
@@ -93,51 +95,42 @@ export class DashboardComponent{
 
   ngOnInit(): void {
     this.userQuery.selectUserProfile$.subscribe((profile) => (this.userP = profile));
+    this.userQuery.selectUserRoles$.subscribe((apps) => (this.userA = apps));
     this.favoriteService.getFavorites(this.userP.userId.toString()).subscribe((user) => {
-      this.favorited = user.favorites;
-      this.fKeys = Object.keys(this.favorited);
-      this.fVals = Object.values(this.favorited);
+      if(user.favorites!=undefined){this.favorited = user.favorites;}
     });
   }
 
-  fillArray(){
-    for(let i = 0;i < 12;i++) {
-      this.applicationService.addToApplications(i,"Application" + i.toString(),"https://angular.io/tutorial")
-    }
-    this.aVals = Object.values(this.applications);
-    this.aKeys = Object.keys(this.applications);
-  }
-
-  fakeArray(num){
-    return new Array(num);
-  }
+  // fillArray(){
+  //   for(let i = 0;i < 12;i++) {
+  //     this.applicationService.addToApplications(i,"Application" + i.toString(),"https://angular.io/tutorial")
+  //   }
+  //   this.aVals = Object.values(this.applications);
+  //   this.aKeys = Object.keys(this.applications);
+  // }
 
   CheckState(nState){
     this.nstate = nState;
     return this.nstate;
   }
 
-  onClick(b: boolean, i: string){
+  onClick(b: boolean, app: Application){
     console.log('click');
     console.log(this.favorited);
-    var j = parseInt(i);
+    var j = app.applicationId;
     var tempUser:User = {uid: this.userP.userId.toString(), name: this.userP.fullName, email: this.userP.userAccount, favorites: this.favorited};
     console.log(tempUser);
-    console.log(i);
+    console.log(j  );
     console.log(b);
-    console.log(this.favorited[i]==undefined);
-    if(b && this.favorited[i]==undefined){
-      this.favoriteService.addToFavorites(tempUser, i, "https://angular.io/tutorial").subscribe((user) => {
+    console.log(this.favorited[j]==undefined);
+    if(b && this.favorited[j]==undefined){
+      this.favoriteService.addToFavorites(tempUser, app).subscribe((user) => {
         this.favorited = user.favorites
-        this.fKeys = Object.keys(this.favorited);
-        this.fVals = Object.values(this.favorited);
       });
     }
-    else if(!b && this.favorited[i]!=undefined){
-      this.favoriteService.removeFromFavorites(tempUser, i).subscribe((user) => {
+    else if(!b && this.favorited[j]!=undefined){
+      this.favoriteService.removeFromFavorites(tempUser, j).subscribe((user) => {
         this.favorited = user.favorites
-        this.fKeys = Object.keys(this.favorited);
-        this.fVals = Object.values(this.favorited);
       });
     }
     //We found the Way

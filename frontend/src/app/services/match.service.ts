@@ -1,3 +1,4 @@
+import { Application } from '../models/application.model';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,10 +6,10 @@ import { Injectable } from '@angular/core';
 })
 export class MatchService {
 
-  matches: {[key: number]: [string,string]} = {};
+  matches: {[key: number]: Application} = {};
 
-  addToMatches(index: number, name: string, link: string){
-  	this.matches[index]=[name,link];
+  addToMatches(app: Application){
+  	this.matches[app.applicationId]=app;
   }
 
   removeFromMatches(index: number){

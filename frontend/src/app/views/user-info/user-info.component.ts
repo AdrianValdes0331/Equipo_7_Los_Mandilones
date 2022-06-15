@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { FavoriteService } from "src/app/services/favorite.service"
 import { Url } from 'url';
+import { UserProfile } from 'src/app/models/user-profile.model';
+import { UserQuery } from "src/app/queries/user.queries";
+import {createIntl, createIntlCache} from '@formatjs/intl'
 
 @Component({
   selector: 'app-user-info',
@@ -12,12 +15,30 @@ import { Url } from 'url';
 export class UserInfoComponent implements OnInit {
 	url: any; //Angular 11, for stricter type
   constructor(
+  	private userQuery: UserQuery,
     private favoriteService: FavoriteService
   ) { 
 	this.url = ('https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png');
   }
+  cache = createIntlCache()
+
+  intl = createIntl(
+	{
+	    locale: 'en-US',
+	    messages: {},
+    },
+  this.cache
+  )
   title = 'User ';
+  userP:UserProfile;
+  countryCode:string;
+  country:string;
   ngOnInit(): void {
+  	this.userQuery.selectUserProfile$.subscribe((profile) => (this.userP = profile));
+  	this.userQuery.selectUserCountry$.subscribe((co) => {
+  		this.countryCode = co;
+  		console.log(this.countryCode);
+  	});
   }
 	
 	//selectFile(event) { //Angular 8

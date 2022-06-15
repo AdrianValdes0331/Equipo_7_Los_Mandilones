@@ -17,23 +17,23 @@
 <div class="content" role="main">
   <div *ngIf = "nstate == 1">
     <div class="card-container">
-      <div class="card" target="_blank" rel="noopener" *ngFor="let obj of fakeArray(12); index as i">
-        <mat-button-toggle #state (change) = "onClick(state.checked, i)" [checked]="favorited[i]!=undefined"> 
+      <div class="card" target="_blank" rel="noopener" *ngFor="let app of userA; index as i">
+        <mat-button-toggle #state (change) = "onClick(state.checked, app)" [checked]="favorited[app.applicationId]!=undefined"> 
           <mat-icon> {{state.checked ? "favorite" : "favorite_border"}} </mat-icon>
         </mat-button-toggle>
-        <a href="https://angular.io/tutorial">Aplication{{i}}</a>
+        <a [href]="app.aplicationLink" target="_blank">{{app.applicationName}}</a>
         <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
       </div>
     </div>
   </div>
   <div *ngIf = "nstate == 2">
     <div class="card-container">
-      <div class="card" target="_blank" rel="noopener" *ngFor="let favorite of fKeys; index as i">
-        <mat-button-toggle #state (change) = "onClick(state.checked, fKeys[i])" [checked]="favorited[fKeys[i]]!=undefined"> 
+      <div class="card" target="_blank" rel="noopener" *ngFor="let favorite of favorited | keyvalue; index as i">
+        <mat-button-toggle #state (change) = "onClick(state.checked, favorite.value.applicationId)" [checked]="favorited[favorite.value.applicationId]!=undefined"> 
           <mat-icon>  {{state.checked ? "favorite" : "favorite_border"}} </mat-icon>
         </mat-button-toggle>
-        <a [href]="favorite">
-          <a class="button button4">Aplication{{fKeys[i]}}</a>
+        <a [href]="favorite.value.applicationLink" target="_blank">
+          <a class="button button4">{{favorite.value.applicationName}}</a>
         </a>
         <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
       </div>
@@ -41,11 +41,11 @@
   </div>
   <div *ngIf = "nstate == 3">
     <div class="card-container">
-      <div class="card" target="_blank" rel="noopener" *ngFor="let match of mKeys; index as i">
-        <mat-button-toggle #state (change) = "onClick(state.checked, mKeys[i])" [checked]="favorited[mKeys[i]]!=undefined"> 
+      <div class="card" target="_blank" rel="noopener" *ngFor="let match of matched | keyvalue; index as i">
+        <mat-button-toggle #state (change) = "onClick(state.checked, match.value)" [checked]="favorited[match.value.applicationId]!=undefined"> 
           <mat-icon>  {{state.checked ? "favorite" : "favorite_border"}} </mat-icon>
         </mat-button-toggle>
-        <a href="https://angular.io/tutorial">{{mVals[i][0]}}</a>
+        <a [href]="match.value.applicatinLink">{{match.value.applicationName}}</a>
         <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
       </div>
     </div>

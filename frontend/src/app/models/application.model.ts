@@ -5,6 +5,7 @@ export interface Application{
     applicationDesc: string;
     applicationId: number;
     applicationName: string;
+    applicationLink: string;
     isVisible: boolean;
     roles: Role[];
 }
